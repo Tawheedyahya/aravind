@@ -1,0 +1,66 @@
+# ─── PHP Settings ───────────────────────────────────────────
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value max_execution_time 300
+php_value max_input_time 300
+php_value memory_limit 256M
+
+# ─── Pretty URLs (Front Controller) ─────────────────────────
+RewriteEngine On
+RewriteBase /
+
+# Allow direct access to real files/folders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route everything else to index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# ─── Security ────────────────────────────────────────────────
+# Hide sensitive files
+<FilesMatch "\.(env|log|sh|sql|json|lock|yml|yaml|ini|bak|cfg|git)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
+
+# Block access to hidden files/dirs (e.g. .git, .env)
+RewriteRule (^|/)\. - [F]
+
+# Prevent script injection in uploads
+<FilesMatch "\.(php|php3|php4|php5|phtml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ─── Performance ─────────────────────────────────────────────
+# Gzip compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+</IfModule>
+
+# ─── HTTPS Redirect ──────────────────────────────────────────
+# Uncomment to force HTTPS:
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ─── www Redirect ────────────────────────────────────────────
+# Uncomment to force non-www:
+# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]

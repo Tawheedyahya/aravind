@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.slsgroup.com/sitemap.xml
+
+Disallow: /vendor/
+Disallow: /.env
+Disallow: /config/

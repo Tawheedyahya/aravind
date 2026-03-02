@@ -1,0 +1,16 @@
+.primary-btn{
+    background:#21C45D;
+    color:#fff;
+    border:none;
+    border-radius:30px;
+    padding: clamp(10px, 1.5vw, 16px) clamp(18px, 3vw, 32px);
+    font-size: clamp(14px, 1.2vw, 18px);
+    font-weight:600;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover{
+    background:#16a34a;
+    transform: translateY(-2px);
+}
