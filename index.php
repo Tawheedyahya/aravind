@@ -22,5 +22,13 @@ switch($path){
         ];
         require __DIR__.'/views/about.php';
         break;
+    case '/contact':
+         $seo = [
+            'title' => 'About SLS Group | Engineering & Infrastructure Experts',
+            'description' => 'Learn about SLS Group’s history, mission, and expertise in engineering, construction, and agricultural infrastructure development.',
+            'keywords' => 'About SLS Group, engineering company Tamil Nadu, infrastructure company India, agricultural engineering experts'
+        ];
+        require __DIR__.'/views/contact.php';
+        break;
 }
 ?>
