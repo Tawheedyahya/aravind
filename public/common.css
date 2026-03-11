@@ -2,111 +2,114 @@
 body {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
                  'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-                 'Open Sans', 'Helvetica Neue', sans-serif;
+                 'Open Sans', 'Helvetica Neue', sans-serif !important;
 }
 
 /* ===== Headings ===== */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 16px 0;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 16px 0 !important;
 }
 
 /* Desktop Sizes */
-h1 { font-size: 56px; }
-h2 { font-size: 44px; }
-h3 { font-size: 32px; }
-h4 { font-size: 24px; }
-h5 { font-size: 20px; }
-h6 { font-size: 16px; }
+h1 { font-size: 56px !important; }
+h2 { font-size: 44px !important; }
+h3 { font-size: 32px !important; }
+h4 { font-size: 24px !important; }
+h5 { font-size: 20px !important; }
+h6 { font-size: 16px !important; }
 
 /* Paragraph */
 p {
-    font-size: 18px;
-    line-height: 1.7;
-    margin: 0 0 20px 0;
+    font-size: 18px !important;
+    line-height: 1.7 !important;
+    margin: 0 0 20px 0 !important;
 }
 
 /* Button Typography */
 button,
 .btn {
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: inherit !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
 }
+
 @media (max-width: 1024px) {
 
-    h1 { font-size: 44px; }
-    h2 { font-size: 36px; }
-    h3 { font-size: 28px; }
-    h4 { font-size: 22px; }
-    h5 { font-size: 18px; }
-    h6 { font-size: 15px; }
+    h1 { font-size: 44px !important; }
+    h2 { font-size: 36px !important; }
+    h3 { font-size: 28px !important; }
+    h4 { font-size: 22px !important; }
+    h5 { font-size: 18px !important; }
+    h6 { font-size: 15px !important; }
 
-    p { font-size: 17px; }
+    p { font-size: 17px !important; }
 
     button,
     .btn {
-        font-size: 15px;
+        font-size: 15px !important;
     }
 }
+
 @media (max-width: 768px) {
 
-    h1 { font-size: 32px; }
-    h2 { font-size: 28px; }
-    h3 { font-size: 24px; }
-    h4 { font-size: 20px; }
-    h5 { font-size: 17px; }
-    h6 { font-size: 14px; }
+    h1 { font-size: 32px !important; }
+    h2 { font-size: 28px !important; }
+    h3 { font-size: 24px !important; }
+    h4 { font-size: 20px !important; }
+    h5 { font-size: 17px !important; }
+    h6 { font-size: 14px !important; }
 
-    p { font-size: 16px; }
+    p { font-size: 16px !important; }
 
     button,
     .btn {
-        font-size: 14px;
+        font-size: 14px !important;
     }
 }
+
 /* ===== Smooth Reveal Animation ===== */
 .fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
+    opacity: 0 !important;
+    transform: translateY(40px) !important;
+    transition: all 0.8s ease !important;
 }
 
 .fade-up.active {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 /* Stagger delay */
-.fade-delay-1 { transition-delay: 0.1s; }
-.fade-delay-2 { transition-delay: 0.2s; }
-.fade-delay-3 { transition-delay: 0.3s; }
-.fade-delay-4 { transition-delay: 0.4s; }
+.fade-delay-1 { transition-delay: 0.1s !important; }
+.fade-delay-2 { transition-delay: 0.2s !important; }
+.fade-delay-3 { transition-delay: 0.3s !important; }
+.fade-delay-4 { transition-delay: 0.4s !important; }
 
 /* Vertical card image hover zoom */
 .vertical-img img {
-    transition: transform 0.6s ease;
+    transition: transform 0.6s ease !important;
 }
 
 .vertical-card:hover .vertical-img img {
-    transform: scale(1.05);
+    transform: scale(1.05) !important;
 }
 
 /* Award number subtle scale */
 .award-item h2 {
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease !important;
 }
 
 .award-item:hover h2 {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
 }
 
 /* CTA Button smooth hover glow */
 .cta-btn {
-    transition: all 0.4s ease;
+    transition: all 0.4s ease !important;
 }
 
 .cta-btn:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
 }
