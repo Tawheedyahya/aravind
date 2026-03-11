@@ -24,7 +24,7 @@ $info_categories = [
 
     <div class="info-img-section fade-up">
        <img 
-    src="../assets/images/photo-1767350413257-4e48b3de0ef3.jpg"
+    src="../assets/images/homepage.webp"
     alt="High-voltage electrical substation infrastructure installation by SLS Contracting"
     loading="lazy"
     class="img-fluid inf-img"
@@ -58,7 +58,7 @@ $info_categories = [
     </div>
 
 </section>
-<?php $verticals = require '../aravind/config/verticals.php'; ?>
+<?php $verticals = require '../aravind/config/businesses.php'; ?>
 
 <section id="home-verticals">
 

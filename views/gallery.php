@@ -1,36 +1,44 @@
 <?php
-// ── Load both data sources ────────────────────────────────
-$verticals  = require __DIR__ . '/../config/verticals.php';
+// ── Load data sources ─────────────────────────────────────
 $businesses = require __DIR__ . '/../config/businesses.php';
+$projects   = require __DIR__ . '/../config/projects.php';
 
-// ── Normalise businesses into the same shape as verticals ─
-// businesses.php has 'category' like 'Engineering & Infrastructure'
-// We map both into a unified $gallery array
+// ── Build unified $gallery array ──────────────────────────
 $gallery = [];
 
-foreach ($verticals as $v) {
-    $gallery[] = [
-        'title'       => $v['title'],
-        'category'    => $v['category'],
-        'image'       => $v['image'],
-        'description' => $v['description'],
-        'source'      => 'vertical',
-    ];
+// Helper: avoid duplicate titles
+function galleryHasTitle(array $gallery, string $title): bool {
+    foreach ($gallery as $g) {
+        if ($g['title'] === $title) return true;
+    }
+    return false;
 }
 
+// 1) Businesses (config/businesses.php)
+//    Fields: title, category, icon, image, description, features, link
 foreach ($businesses as $b) {
-    // Avoid duplicates — skip if same title already added from verticals
-    $exists = false;
-    foreach ($gallery as $g) {
-        if ($g['title'] === $b['title']) { $exists = true; break; }
-    }
-    if (!$exists) {
+    if (!galleryHasTitle($gallery, $b['title'])) {
         $gallery[] = [
             'title'       => $b['title'],
             'category'    => $b['category'],
             'image'       => $b['image'],
             'description' => $b['description'],
             'source'      => 'business',
+        ];
+    }
+}
+
+// 2) Projects (config/projects.php)
+//    Fields: title, category, status, image, date, location, client, link
+//    No 'description' field — generate one from client + location
+foreach ($projects as $p) {
+    if (!galleryHasTitle($gallery, $p['title'])) {
+        $gallery[] = [
+            'title'       => $p['title'],
+            'category'    => $p['category'],
+            'image'       => $p['image'],
+            'description' => 'Client: ' . $p['client'] . ' · ' . $p['location'],
+            'source'      => 'project',
         ];
     }
 }
@@ -120,12 +128,19 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
 /* ── FILTER TABS ──────────────────────────────────────────── */
 .gal-filters {
     background: #fff;
-    padding: 28px 24px 0;
+    padding: 20px 24px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     gap: 10px;
     border-bottom: 1px solid #eee;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.gal-filters::-webkit-scrollbar {
+    display: none;
 }
 
 .gal-filter-btn {
@@ -140,7 +155,8 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
     transition: all 0.2s ease;
     outline: none;
     letter-spacing: 0.2px;
-    margin-bottom: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .gal-filter-btn:hover {
@@ -416,19 +432,19 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
     </section>
 
     <!-- ══════════════════════════════════════
-         FILTER TABS — auto-built from both sources
+         FILTER TABS — auto-built from businesses + projects
     ══════════════════════════════════════ -->
-    <div class="gal-filters">
+    <!-- <div class="gal-filters">
         <button class="gal-filter-btn active" data-filter="all">All</button>
         <?php foreach ($categories as $cat): ?>
             <button class="gal-filter-btn" data-filter="<?= htmlspecialchars(strtolower($cat)) ?>">
                 <?= htmlspecialchars($cat) ?>
             </button>
         <?php endforeach; ?>
-    </div>
+    </div> -->
 
     <!-- ══════════════════════════════════════
-         GALLERY GRID — merged from both files
+         GALLERY GRID — merged from businesses + projects
     ══════════════════════════════════════ -->
     <section class="gal-section">
         <div class="gal-grid" id="galGrid">
