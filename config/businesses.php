@@ -7,7 +7,7 @@ return [
         'title'       => 'SLS Contracting Private Limited',
         'category'    => 'Engineering & Infrastructure',
         'icon'        => 'bolt',       // icon key — rendered in businesses.php
-        'image'       => '../assets/images/pipe.webp',
+        'image'       => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
         'description' => 'Our flagship division specializing in heavy electrical infrastructure. From 400kV substations to intricate electromechanical works, we provide turnkey solutions with a focus on reliability and safety.',
         'features'    => [
             'Substation Contracting',
@@ -22,7 +22,7 @@ return [
         'title'       => 'SLS Blue Metals',
         'category'    => 'Construction Materials',
         'icon'        => 'building',
-        'image'       => '../assets/images/jcb.webp',
+        'image'       => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
         'description' => 'Supplying the building blocks of modern architecture. We provide premium quality Aggregates, M Sand, and P Sand, ensuring structural integrity for massive infrastructure projects.',
         'features'    => [
             'Premium Aggregates',
@@ -37,7 +37,7 @@ return [
         'title'       => 'SLS Agency',
         'category'    => 'Energy Retail',
         'icon'        => 'flame',
-        'image'       => '../assets/images/petrol.webp',
+        'image'       => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
         'description' => 'Fueling mobility and industrial growth. Our agency operations manage modern fuel stations, providing essential energy resources with high service standards.',
         'features'    => [
             'Fuel Station Operations',
@@ -52,7 +52,7 @@ return [
         'title'       => 'SLS Marriage Hall',
         'category'    => 'Hospitality & Events',
         'icon'        => 'building',
-        'image'       => '../assets/images/marriage.webp',
+        'image'       => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
         'description' => 'Hosting memories in grandeur. Our premium convention and event facility is designed to accommodate celebrations of all scales, offering top-tier amenities.',
         'features'    => [
             'Grand Event Facilities',
@@ -67,7 +67,7 @@ return [
         'title'       => 'SLS Farm',
         'category'    => 'Agriculture',
         'icon'        => 'leaf',
-        'image'       => '../assets/images/farm.webp',
+        'image'       => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
         'description' => 'Committed to sustainable food production. Our agricultural operations utilize modern farming techniques to produce high-quality crops while maintaining eco-balance.',
         'features'    => [
             'Sustainable Agriculture',

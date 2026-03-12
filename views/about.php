@@ -373,7 +373,7 @@
 
             <div class="ab-journey__img">
                 <img
-                    src="../assets/images/about.webp"
+                    src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=800&q=80"
                     alt="Starry night sky"
                 />
             </div>
