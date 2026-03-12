@@ -61,7 +61,22 @@ switch ($path) {
         ];
         require __DIR__ . '/views/contact.php';
         break;
-
+    case '/slsbim':
+           $seo = [
+            'title'       => 'Contact SLS Group | Get in Touch',
+            'description' => 'Contact SLS Group for enquiries about engineering, construction, energy, and infrastructure projects.',
+            'keywords'    => 'Contact SLS Group, SLS enquiry, SLS Group Tamil Nadu contact'
+        ];
+        require __DIR__ . '/views/slsbim.php';
+        break;
+     case '/alshams':
+           $seo = [
+            'title'       => 'Contact SLS Group | Get in Touch',
+            'description' => 'Contact SLS Group for enquiries about engineering, construction, energy, and infrastructure projects.',
+            'keywords'    => 'Contact SLS Group, SLS enquiry, SLS Group Tamil Nadu contact'
+        ];
+        require __DIR__ . '/views/alshams.php';
+        break;
     default:
         http_response_code(404);
         $seo = [

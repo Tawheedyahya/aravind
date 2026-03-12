@@ -15,14 +15,6 @@ $seo = [
 
 /* ── cURL helper functions ── */
 
-/**
- * Send a POST request using cURL.
- *
- * @param string $url      Target URL
- * @param string $postData POST body (query string or JSON)
- * @param array  $headers  HTTP headers (e.g. ['Content-Type: application/json'])
- * @return string|false    Response body or false on failure
- */
 function curl_post(string $url, string $postData, array $headers = []): string|false
 {
     $ch = curl_init();
@@ -45,13 +37,6 @@ function curl_post(string $url, string $postData, array $headers = []): string|f
     return $response;
 }
 
-/**
- * Send a GET request using cURL.
- *
- * @param string $url     Target URL
- * @param array  $headers HTTP headers
- * @return string|false   Response body or false on failure
- */
 function curl_get(string $url, array $headers = []): string|false
 {
     $ch = curl_init();
@@ -73,14 +58,6 @@ function curl_get(string $url, array $headers = []): string|false
     return $response;
 }
 
-/**
- * Send a PUT request using cURL.
- *
- * @param string $url     Target URL
- * @param string $body    Request body (JSON)
- * @param array  $headers HTTP headers
- * @return string|false   Response body or false on failure
- */
 function curl_put(string $url, string $body, array $headers = []): string|false
 {
     $ch = curl_init();
@@ -103,7 +80,7 @@ function curl_put(string $url, string $body, array $headers = []): string|false
     return $response;
 }
 
-/* ── POST handler (runs BEFORE any HTML output) ── */
+/* ── POST handler ── */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = htmlspecialchars(trim($_POST['first_name'] ?? ''));
     $last_name  = htmlspecialchars(trim($_POST['last_name']  ?? ''));
@@ -114,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($first_name && $last_name && filter_var($email, FILTER_VALIDATE_EMAIL) && $message) {
 
-        /* ── Mail config ── */
         $admin_email  = 'tawheedyahya0@gmail.com';
         $site_name    = 'SLS Group';
         $subject      = 'New Enquiry from ' . $first_name . ' ' . $last_name . ' – ' . $site_name;
@@ -128,7 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $division_label = $division ? ($division_map[$division] ?? ucfirst($division)) : '—';
         $submitted_at   = date('d M Y, h:i A');
 
-        /* ── HTML email body ── */
         ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -201,12 +176,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </html>
 <?php $html = ob_get_clean();
 
-        /* ── PHPMailer via Gmail SMTP ── */
         $mail = new PHPMailer(true);
         $mail_sent = false;
 
         try {
-            // SMTP config
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
@@ -216,12 +189,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->Port       = 587;
             $mail->CharSet    = 'UTF-8';
 
-            // Sender & recipient
             $mail->setFrom('soulcreationzclientmbs@gmail.com', 'SLS Group');
             $mail->addAddress($admin_email);
             $mail->addReplyTo($email, $first_name . ' ' . $last_name);
 
-            // Content
             $mail->isHTML(true);
             $mail->Subject = $subject;
             $mail->Body    = $html;
@@ -235,13 +206,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail_sent = false;
         }
 
-        /* ── Google Sheets API (all HTTP via cURL) ── */
+        /* ── Google Sheets API ── */
         $sheet_id  = '1hLtI4mF3mXhVNUe-WYfFPX25_45LUxHjSkTrk8Q7-8o';
         $sheet_tab = 'Sheet1';
         $creds_file = __DIR__ . '/../config/sls-service-account.json';
 
         try {
-            // 1. Load credentials & build JWT
             $creds     = json_decode(file_get_contents($creds_file), true);
             $now       = time();
             $jwt_header  = base64_encode(json_encode(['alg'=>'RS256','typ'=>'JWT']));
@@ -256,7 +226,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             openssl_sign($jwt_input, $signature, $creds['private_key'], 'SHA256');
             $jwt = $jwt_input . '.' . base64_encode($signature);
 
-            // 2. Exchange JWT for access token (POST via cURL)
             $token_resp = curl_post(
                 'https://oauth2.googleapis.com/token',
                 http_build_query([
@@ -270,7 +239,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($access_token) {
                 $auth_header = 'Authorization: Bearer ' . $access_token;
 
-                // 3. Check if header row exists (GET via cURL)
                 $range_check = urlencode($sheet_tab . '!A1');
                 $check_resp  = curl_get(
                     "https://sheets.googleapis.com/v4/spreadsheets/{$sheet_id}/values/{$range_check}",
@@ -279,7 +247,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $check_data = json_decode($check_resp, true);
                 $has_header = !empty($check_data['values'][0][0]);
 
-                // Add header row if missing (PUT via cURL)
                 if (!$has_header) {
                     $header_payload = json_encode([
                         'values' => [['#', 'Submitted At', 'First Name', 'Last Name', 'Email', 'Phone', 'Division', 'Message']],
@@ -291,7 +258,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     );
                 }
 
-                // 4. Get next row number (GET via cURL)
                 $count_resp = curl_get(
                     "https://sheets.googleapis.com/v4/spreadsheets/{$sheet_id}/values/" . urlencode($sheet_tab . '!A:A'),
                     [$auth_header]
@@ -299,7 +265,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $count_data = json_decode($count_resp, true);
                 $next_row   = count($count_data['values'] ?? []) + 1;
 
-                // 5. Append row (PUT via cURL)
                 $row_payload = json_encode([
                     'values' => [[
                         $next_row - 1,
@@ -333,7 +298,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-/* ── Pick up flash message after redirect ── */
+/* ── Flash message ── */
 $success = '';
 if (!empty($_SESSION['contact_success'])) {
     $success = $_SESSION['contact_success'];
@@ -436,7 +401,6 @@ require __DIR__ . '/../layouts/app.php';
         border-color: #2d6a4f;
         box-shadow: 0 0 0 3px rgba(45,106,79,.12);
     }
-    /* Invalid state */
     .form-group input.is-invalid,
     .form-group select.is-invalid,
     .form-group textarea.is-invalid {
@@ -456,24 +420,49 @@ require __DIR__ . '/../layouts/app.php';
     .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 
     /* ── Toast ── */
-    .toast {
-        display: none; padding: .85rem 1.1rem; border-radius: 10px;
-        margin-bottom: 1.2rem; font-weight: 500;
-    }
-    .toast.show { display: block; }
-    .toast-success { background: #d1fadf; color: #1a6635; border: 1px solid #6ee7a0; }
-    .toast-error   { background: #fde8e8; color: #9b1c1c; border: 1px solid #f8b4b4; }
+    /* ── Toast ── */
+.toast {
+    display: none;
+    padding: .85rem 1.1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 9999;
+    min-width: 280px;
+    max-width: 420px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    animation: slideIn .3s ease;
+}
+.toast.show { display: block; }
+.toast-success { background: #d1fadf; color: #1a6635; border: 1px solid #6ee7a0; }
+.toast-error   { background: #fde8e8; color: #9b1c1c; border: 1px solid #f8b4b4; }
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
 
     /* ── Button ── */
     .btn-submit {
         width: 100%; padding: .9rem 1.5rem; background: #1a4a2e; color: #fff;
         font-family: inherit; font-weight: 600; border: none; border-radius: 10px;
         cursor: pointer; display: flex; align-items: center; justify-content: center;
-        gap: .55rem; transition: background .2s, transform .15s; letter-spacing: .3px;
+        gap: .55rem; transition: background .2s, transform .15s, opacity .2s; letter-spacing: .3px;
     }
-    .btn-submit:hover  { background: #3a7d5a; transform: translateY(-1px); }
-    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:hover:not(:disabled)  { background: #3a7d5a; transform: translateY(-1px); }
+    .btn-submit:active:not(:disabled) { transform: translateY(0); }
     .btn-submit svg    { width: 17px; height: 17px; }
+
+    /* ── Spinner ── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #btnSpinner {
+        width: 20px; height: 20px;
+        display: none;
+        animation: spin .75s linear infinite;
+        flex-shrink: 0;
+    }
 
     /* ── Responsive ── */
     @media (max-width: 900px) { .contact-wrapper { grid-template-columns: 1fr; } }
@@ -534,20 +523,18 @@ require __DIR__ . '/../layouts/app.php';
                 </div>
             </div>
 
-            <!-- Map — click opens Google Maps -->
+            <!-- Map -->
             <a class="map-link"
                href="https://www.google.com/maps/search/?api=1&query=123+Corporate+Plaza+Engineering+District+Coimbatore+Tamil+Nadu+India"
                target="_blank" rel="noopener noreferrer"
                aria-label="Open location in Google Maps">
 
-                <!-- Static visual block (no API key needed) -->
                 <div class="map-static">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span>SLS Group – Coimbatore</span>
                     <small>123 Corporate Plaza, Engineering District</small>
                 </div>
 
-                <!-- Hover overlay -->
                 <div class="map-overlay" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span>View on Google Maps</span>
@@ -624,9 +611,18 @@ require __DIR__ . '/../layouts/app.php';
                     <span class="field-error" id="err_message">Please enter your message.</span>
                 </div>
 
-                <button type="submit" class="btn-submit">
-                    Submit Enquiry
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <!-- Submit button with spinner -->
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <!-- Default state: label + send icon -->
+                    <span id="btnContent" style="display:flex;align-items:center;justify-content:center;gap:.55rem;">
+                        <span id="btnLabel">Submit Enquiry</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </span>
+                    <!-- Submitting state: spinner only -->
+                    <svg id="btnSpinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" stroke-opacity=".3"/>
+                        <path d="M12 2a10 10 0 0 1 10 10"/>
+                    </svg>
                 </button>
 
             </form>
@@ -638,8 +634,25 @@ require __DIR__ . '/../layouts/app.php';
 
 <script>
 (function () {
-    const form    = document.getElementById('enquiryForm');
-    const toast   = document.getElementById('formToast');
+    const form       = document.getElementById('enquiryForm');
+    const toast      = document.getElementById('formToast');
+    const submitBtn  = document.getElementById('submitBtn');
+    const btnContent = document.getElementById('btnContent');
+    const btnSpinner = document.getElementById('btnSpinner');
+
+    /* ── Spinner toggle ── */
+    function setSubmitting(on) {
+        submitBtn.disabled          = on;
+        submitBtn.style.opacity     = on ? '.7' : '';
+        submitBtn.style.cursor      = on ? 'not-allowed' : '';
+        btnContent.style.display    = on ? 'none' : 'flex';
+        btnSpinner.style.display    = on ? 'block' : 'none';
+    }
+    function showToast(msg, type) {
+    toast.textContent = msg;
+    toast.className   = 'toast show toast-' + type;
+    setTimeout(() => { toast.className = 'toast'; }, 5000);
+}
 
     /* ── helpers ── */
     function showError(fieldId, errId, show) {
@@ -687,27 +700,28 @@ require __DIR__ . '/../layouts/app.php';
 
         var valid = true;
 
-        if (!first)                    { showError('first_name', 'err_first_name', true); valid = false; }
-        else                           { showError('first_name', 'err_first_name', false); }
+        if (!first)               { showError('first_name', 'err_first_name', true);  valid = false; }
+        else                      { showError('first_name', 'err_first_name', false); }
 
-        if (!last)                     { showError('last_name',  'err_last_name',  true); valid = false; }
-        else                           { showError('last_name',  'err_last_name',  false); }
+        if (!last)                { showError('last_name',  'err_last_name',  true);  valid = false; }
+        else                      { showError('last_name',  'err_last_name',  false); }
 
-        if (!isValidEmail(email))      { showError('email',      'err_email',      true); valid = false; }
-        else                           { showError('email',      'err_email',      false); }
+        if (!isValidEmail(email)) { showError('email',      'err_email',      true);  valid = false; }
+        else                      { showError('email',      'err_email',      false); }
 
-        if (!isValidPhone(phone))      { showError('phone',      'err_phone',      true); valid = false; }
-        else                           { showError('phone',      'err_phone',      false); }
+        if (!isValidPhone(phone)) { showError('phone',      'err_phone',      true);  valid = false; }
+        else                      { showError('phone',      'err_phone',      false); }
 
-        if (!message)                  { showError('message',    'err_message',    true); valid = false; }
-        else                           { showError('message',    'err_message',    false); }
+        if (!message)             { showError('message',    'err_message',    true);  valid = false; }
+        else                      { showError('message',    'err_message',    false); }
 
         if (!valid) {
             showToast('Please fix the errors above before submitting.', 'error');
             return;
         }
 
-        /* All good — submit to PHP backend */
+        /* All valid — show spinner then submit */
+        setSubmitting(true);
         form.submit();
     });
 })();

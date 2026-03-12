@@ -211,6 +211,35 @@ width:100%;
 }
 
 }
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    min-width: 180px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-menu li a:hover {
+    background: #f5f5f5;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 </style>
 
 <?php
@@ -247,7 +276,21 @@ if (!function_exists('active')) {
             <li><a href="/projects"   <?= active('/projects',   $currentPath) ?>>Projects</a></li>
             <li><a href="/gallery"    <?= active('/gallery',    $currentPath) ?>>Gallery</a></li>
             <li><a href="/contact"    <?= active('/contact',    $currentPath) ?>>Contact</a></li>
-            <li><a href="/contact" class="btn-primary">Enquire Now</a></li>
+            <li class="dropdown">
+            <a href="#" <?= active(['/sls_bim','/al_shams'], $currentPath) ?>>
+                Special Divisions
+            </a>
+
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="/slsbim" <?= active('/slsbim', $currentPath) ?>>SLS BIM</a>
+                </li>
+
+                <li>
+                    <a href="/alshams" <?= active('/alshams', $currentPath) ?>>Al Shams</a>
+                </li>
+            </ul>
+        </li>
         </ul>
     </nav>
 </header>
