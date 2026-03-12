@@ -104,7 +104,7 @@ $info_categories = [
             <p >Engineering Heritage</p>
         </div>
         <div class="award-item fade-up">
-            <h2 >1A50+</h2>
+            <h2 >150+</h2>
             <p >Infrastructure Projects</p>
         </div>
         <div class="award-item fade-up">
