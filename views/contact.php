@@ -4,14 +4,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 session_start();
 
-$seo = [
-    'title'       => 'Contact SLS Group | Engineering Excellence – Get in Touch',
-    'description' => 'Contact SLS Group for engineering projects, business enquiries, and service information. Reach our Coimbatore office or submit an online enquiry form.',
-];
 
 /* ── cURL helper functions ── */
 

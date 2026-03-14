@@ -20,7 +20,8 @@ $info_categories = [
     <div class="hero-content fade-up">
         <h1>The <span style="font-style: italic; font-weight: 700; text-shadow: 0 0 10px rgba(255,255,255,0.4);">SLS</span> Legacy</h1>
         <p>From high-voltage power grids to sustainable agriculture, we bridge technology and nature to empower future generations.</p>
-        <button class="banner-btn">Our Verticals</button>
+        <a class="banner-btn" href="/business">Our business</a>
+        <a class="banner-btn" href="/contact">Contact us</a>
     </div>
 </section>
 <section id="home-awards" class="container">
