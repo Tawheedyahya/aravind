@@ -15,7 +15,6 @@ function galleryHasTitle(array $gallery, string $title): bool {
 }
 
 // 1) Businesses (config/businesses.php)
-//    Fields: title, category, icon, image, description, features, link
 foreach ($businesses as $b) {
     if (!galleryHasTitle($gallery, $b['title'])) {
         $gallery[] = [
@@ -29,8 +28,6 @@ foreach ($businesses as $b) {
 }
 
 // 2) Projects (config/projects.php)
-//    Fields: title, category, status, image, date, location, client, link
-//    No 'description' field — generate one from client + location
 foreach ($projects as $p) {
     if (!galleryHasTitle($gallery, $p['title'])) {
         $gallery[] = [
@@ -65,14 +62,29 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
 
 /* ── HERO ─────────────────────────────────────────────────── */
 .gal-hero {
-    background: #1e5e3e;
-    text-align: center;
-    padding: 56px 24px 72px;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    padding: 72px 24px 88px;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #000; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 
 .gal-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* background: rgba(20, 77, 48, 0.55); */
+    z-index: 1;
+}
+
+.gal-hero::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -80,10 +92,18 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
         -45deg,
         transparent,
         transparent 40px,
-        rgba(255,255,255,0.03) 40px,
-        rgba(255,255,255,0.03) 41px
+        rgba(255,255,255,0.02) 40px,
+        rgba(255,255,255,0.02) 41px
     );
     pointer-events: none;
+    z-index: 2;
+}
+
+.gal-hero__content {
+    position: relative;
+    z-index: 3;
+    max-width: 860px;
+    width: 100%;
 }
 
 .gal-hero__badge {
@@ -98,7 +118,6 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
     border-radius: 100px;
     margin-bottom: 18px;
     letter-spacing: 0.3px;
-    position: relative;
 }
 
 .gal-hero__badge svg {
@@ -113,16 +132,14 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
     color: #fff;
     line-height: 1.1;
     margin-bottom: 14px;
-    position: relative;
 }
 
 .gal-hero p {
-    font-size: 14.5px;
+    font-size: 15.5px;
     color: rgba(255,255,255,0.75);
     line-height: 1.7;
     max-width: 420px;
     margin: 0 auto;
-    position: relative;
 }
 
 /* ── FILTER TABS ──────────────────────────────────────────── */
@@ -351,7 +368,7 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
     right: 14px;
     width: 36px;
     height: 36px;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.15);
     border: none;
     border-radius: 50%;
     color: #fff;
@@ -406,7 +423,7 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
 }
 
 @media (max-width: 560px) {
-    .gal-hero    { padding: 40px 20px 52px; }
+    .gal-hero    { padding: 40px 20px 52px; min-height: 280px; }
     .gal-grid    { columns: 1; }
     .gal-item:nth-child(n) img { height: 240px; }
     .gal-filters { padding: 20px 16px 0; gap: 8px; }
@@ -422,13 +439,15 @@ $categories = array_values(array_unique(array_column($gallery, 'category')));
     <!-- ══════════════════════════════════════
          HERO
     ══════════════════════════════════════ -->
-    <section class="gal-hero">
-        <div class="gal-hero__badge">
-            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-            Our Gallery
+    <section class="gal-hero" id="galHero">
+        <div class="gal-hero__content">
+            <div class="gal-hero__badge">
+                <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                Our Gallery
+            </div>
+            <h1>Visual Gallery</h1>
+            <p>A window into our facilities, operations, and successful project outcomes across all divisions.</p>
         </div>
-        <h1>Visual Gallery</h1>
-        <p>A window into our facilities, operations, and successful project outcomes across all divisions.</p>
     </section>
 
     <!-- ══════════════════════════════════════
@@ -568,6 +587,32 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') shiftLightbox(1);
     if (e.key === 'ArrowLeft')  shiftLightbox(-1);
 });
+
+/* ── HERO BACKGROUND ROTATOR ─────────────────────────────── */
+(function () {
+    const hero = document.getElementById('galHero');
+    if (!hero || !GALLERY.length) return;
+
+    // Pull all image paths from the gallery array
+    const images = GALLERY.map(g => g.image).filter(Boolean);
+
+    let currentIndex = 0;
+
+    function applyImage(index) {
+        hero.style.backgroundImage = 'url("' + images[index] + '")';
+    }
+
+    // Set first image immediately
+    applyImage(currentIndex);
+
+    // Rotate every 1.5s — same pattern as businesses.php
+    if (images.length > 1) {
+        setInterval(function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            applyImage(currentIndex);
+        }, 1500);
+    }
+})();
 </script>
 
 <?php include 'layouts/footer.php'; ?>
