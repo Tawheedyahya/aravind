@@ -130,8 +130,8 @@
         <div class="footer-col">
             <h4>Contact Us</h4>
             <ul class="contact-list">
-                <li>123 Corporate Plaza, Engineering District, Chennai, India</li>
-                <li>+91 44 2345 6789</li>
+                <li>Main office - 232/1A , VEPPANTHATTAI SOUTH, PERAMBALUR - 621116</li>
+                <li>+919087202312</li>
                 <li>info@slsgroup.com</li>
             </ul>
         </div>

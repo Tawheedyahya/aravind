@@ -20,6 +20,26 @@ $info_categories = [
         <button class="banner-btn">Our Verticals</button>
     </div>
 </section>
+<section id="home-awards" class="container">
+    <div class="awards-container">
+        <div class="award-item fade-up">
+            <h2 >25+</h2>
+            <p >Engineering Heritage</p>
+        </div>
+        <div class="award-item fade-up">
+            <h2 >150+</h2>
+            <p >Infrastructure Projects</p>
+        </div>
+        <div class="award-item fade-up">
+            <h2 >40+</h2>
+            <p >Global Alliances</p>
+        </div>
+        <div class="award-item fade-up">
+            <h2 >500+</h2>
+            <p >Specialists</p>
+        </div>
+    </div>
+</section>
 <section id="infrastructure-services" aria-labelledby="infrastructure-heading" style="background-color: whitesmoke;">
 
     <div class="info-img-section fade-up">
@@ -96,26 +116,6 @@ $info_categories = [
         </div>
     </div>
 
-</section>
-<section id="home-awards" class="container">
-    <div class="awards-container">
-        <div class="award-item fade-up">
-            <h2 >25+</h2>
-            <p >Engineering Heritage</p>
-        </div>
-        <div class="award-item fade-up">
-            <h2 >150+</h2>
-            <p >Infrastructure Projects</p>
-        </div>
-        <div class="award-item fade-up">
-            <h2 >40+</h2>
-            <p >Global Alliances</p>
-        </div>
-        <div class="award-item fade-up">
-            <h2 >500+</h2>
-            <p >Specialists</p>
-        </div>
-    </div>
 </section>
 <section id="home-cta">
     <div class="cta-container fade-up">
