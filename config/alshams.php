@@ -6,7 +6,7 @@ return [
         'id' => 1,
         'title' => 'Installation of Electrical Equipment',
         'category' => 'Engineering',
-        'image' => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
+        'image' => '../assets/images/alshams1.webp',
         'description' => 'Specialized services for the installation of Gas Insulated Switchgear, Circuit Breakers, and complex industrial systems.',
         'link' => '/installation-electrical-equipment'
     ],
@@ -15,7 +15,7 @@ return [
         'id' => 2,
         'title' => 'Transformers',
         'category' => 'Power Systems',
-        'image' => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
+        'image' => '../assets/images/alshams2.webp',
         'description' => 'Comprehensive transformer and reactor installation services to ensure stable power distribution across grids.',
         'link' => '/transformers'
     ],
@@ -24,7 +24,7 @@ return [
         'id' => 3,
         'title' => 'Cable Laying',
         'category' => 'Infrastructure',
-        'image' => '../assets/images/photo-1767350413257-4e48b3de0ef3.jpg',
+        'image' => '../assets/images/alshams3.webp',
         'description' => 'Structured and reliable cable management for industrial and power plant infrastructure, ensuring long-term durability.',
         'link' => '/cable-laying'
     ],

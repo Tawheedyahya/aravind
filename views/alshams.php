@@ -393,10 +393,10 @@ $visibleCount = 3;
           </div>
           <h3 class="as-card-title"><?= htmlspecialchars($service['title']) ?></h3>
           <p class="as-card-desc"><?= htmlspecialchars($service['description']) ?></p>
-          <span class="as-card-link" aria-label="View details for <?= htmlspecialchars($service['title']) ?>">
+          <!-- <span class="as-card-link" aria-label="View details for <?= htmlspecialchars($service['title']) ?>">
             View Details
             <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
+          </span> -->
         </div>
 
       </a>
@@ -411,3 +411,4 @@ $visibleCount = 3;
   </div>
 
 </section>
+<?php require '../aravind/layouts/footer.php' ?>

@@ -106,11 +106,11 @@
         <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Businesses</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/businesses">Our Businesses</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
 
@@ -138,14 +138,14 @@
 
     </div>
 
-    <div class="footer-bottom">
+    <!-- <div class="footer-bottom">
         <p>© 2026 SLS Group of Companies. All rights reserved.</p>
         <div class="footer-legal">
             <a href="#" style="color: white;">Privacy Policy</a>
             <a href="#" style="color: white;">Terms of Service</a>
             <a href="#" style="color: white;">Admin Tools</a>
         </div>
-    </div>
+    </div> -->
 
 </footer>
 <script>
