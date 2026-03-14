@@ -20,6 +20,7 @@ $seo = array_merge($defaultSeo, $seo ?? []);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="preload" href="/assets/images/hero-video.mp4" as="video" type="video/mp4">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -27,6 +28,7 @@ $seo = array_merge($defaultSeo, $seo ?? []);
 
 <!-- PRIMARY SEO -->
 <meta name="description" content="<?= htmlspecialchars($seo['description']) ?>">
+<meta name="keywords" content="<?= htmlspecialchars($seo['keywords']) ?>">
 <meta name="robots" content="<?= $seo['robots'] ?>">
 <link rel="canonical" href="<?= htmlspecialchars($seo['url']) ?>">
 
@@ -58,8 +60,8 @@ $seo = array_merge($defaultSeo, $seo ?? []);
   "logo": "https://www.slsgroup.com/assets/images/header_logo.png",
   "description": "<?= htmlspecialchars($seo['description']) ?>",
   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Coimbatore",
+    "@type": "621116",
+    "addressLocality": "Main office - 232/1A , VEPPANTHATTAI SOUTH, PERAMBALUR",
     "addressRegion": "Tamil Nadu",
     "addressCountry": "IN"
   }

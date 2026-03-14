@@ -10,9 +10,12 @@ $info_categories = [
 ];
 ?>
 <section id="hero3d">
-    <video autoplay muted loop playsinline id="bg-video">
+    <link rel="preload" href="/assets/images/hero-video.mp4" as="video" type="video/mp4">
+
+    <video autoplay muted loop playsinline preload="auto"
+        poster="../assets/images/hero-poster.webp"
+        id="bg-video">
         <source src="../assets/images/hero-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
     <div class="hero-content fade-up">
         <h1>The <span style="font-style: italic; font-weight: 700; text-shadow: 0 0 10px rgba(255,255,255,0.4);">SLS</span> Legacy</h1>
@@ -23,36 +26,36 @@ $info_categories = [
 <section id="home-awards" class="container">
     <div class="awards-container">
         <div class="award-item fade-up">
-            <h2 >25+</h2>
-            <p >Engineering Heritage</p>
+            <h2>25+</h2>
+            <p>Engineering Heritage</p>
         </div>
         <div class="award-item fade-up">
-            <h2 >150+</h2>
-            <p >Infrastructure Projects</p>
+            <h2>150+</h2>
+            <p>Infrastructure Projects</p>
         </div>
         <div class="award-item fade-up">
-            <h2 >40+</h2>
-            <p >Global Alliances</p>
+            <h2>40+</h2>
+            <p>Global Alliances</p>
         </div>
         <div class="award-item fade-up">
-            <h2 >500+</h2>
-            <p >Specialists</p>
+            <h2>500+</h2>
+            <p>Specialists</p>
         </div>
     </div>
 </section>
 <section id="infrastructure-services" aria-labelledby="infrastructure-heading" style="background-color: whitesmoke;">
 
     <div class="info-img-section fade-up">
-       <img 
-    src="../assets/images/homepage.webp"
-    alt="High-voltage electrical substation infrastructure installation by SLS Contracting"
-    loading="lazy"
-    class="img-fluid inf-img"
-    style="width:100%; max-width:600px; height:auto;">
+        <img
+            src="../assets/images/homepage.webp"
+            alt="High-voltage electrical substation infrastructure installation by SLS Contracting"
+            loading="lazy"
+            class="img-fluid inf-img"
+            style="width:100%; max-width:600px; height:auto;">
     </div>
 
     <div class="info-content-section fade-up fade-delay-1">
-        
+
         <span class="section-label">Flagship Division</span>
 
         <h2 id="infrastructure-heading">
@@ -60,8 +63,8 @@ $info_categories = [
         </h2>
 
         <p>
-            SLS Contracting Private Limited is our engineering division specializing in 
-            high-voltage electrical infrastructure, substation contracting, and 
+            SLS Contracting Private Limited is our engineering division specializing in
+            high-voltage electrical infrastructure, substation contracting, and
             precision electromechanical installations for industrial and utility sectors.
         </p>
 
@@ -89,13 +92,13 @@ $info_categories = [
         <div class="verticals-grid">
 
             <?php foreach ($verticals as $vertical): ?>
-                
+
                 <div class="vertical-card fade-up">
 
                     <div class="vertical-img">
-                        <img src="<?= $vertical['image']; ?>" 
-                             alt="<?= htmlspecialchars($vertical['title']); ?>"
-                             loading="lazy">
+                        <img src="<?= $vertical['image']; ?>"
+                            alt="<?= htmlspecialchars($vertical['title']); ?>"
+                            loading="lazy">
                         <span class="category-badge">
                             <?= htmlspecialchars($vertical['category']); ?>
                         </span>
