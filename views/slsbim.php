@@ -334,6 +334,36 @@ require __DIR__ . '/../layouts/app.php';
       padding: 24px 18px;
     }
   }
+  /* Desktop — was translateY(50%) */
+.ct-stats {
+    transform: translateY(30%);
+}
+
+.ct-spacer {
+    height: 60px; /* was 90px */
+}
+
+/* Tablet — was translateY(44%) */
+@media (max-width: 768px) {
+    .ct-stats {
+        transform: translateY(30%);
+    }
+
+    .ct-spacer {
+        height: 80px; /* was 140px */
+    }
+}
+
+/* Mobile — was translateY(38%) */
+@media (max-width: 480px) {
+    .ct-stats {
+        transform: translateY(25%);
+    }
+
+    .ct-spacer {
+        height: 70px; /* was 130px */
+    }
+}
 </style>
 
 <!-- ══════════════════════════════════
@@ -352,7 +382,7 @@ require __DIR__ . '/../layouts/app.php';
   <div class="ct-stats" role="list">
 
     <article class="ct-stat-card" role="listitem">
-      <div class="ct-stat-icon" aria-hidden="true">
+      <div class="ct-stat-icon" aria-hidden="truex`">
         <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       </div>
       <p class="ct-stat-number">500+</p>

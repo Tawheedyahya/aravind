@@ -12,21 +12,34 @@
     }
 
     /* HEADER */
-    .site-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 14px 60px;
-        background: #fff;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        transition: box-shadow 0.3s ease;
-    }
+/* HEADER */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 60px;
 
-    .site-header.scrolled {
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    }
+    /* Glass effect initially */
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    transition: background 0.35s ease,
+                box-shadow 0.35s ease,
+                backdrop-filter 0.35s ease;
+}
+
+/* After scrolling → normal header */
+.site-header.scrolled {
+    background: #ffffff;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
 
     /* BRAND */
     .brand {

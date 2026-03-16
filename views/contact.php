@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($first_name && $last_name && filter_var($email, FILTER_VALIDATE_EMAIL) && $message) {
 
-        $admin_email  = 'tawheedyahya0@gmail.com';
+        $admin_email  = 'logeshwaran82108322@gmail.com';
         $site_name    = 'SLS Group';
         $subject      = 'New Enquiry from ' . $first_name . ' ' . $last_name . ' – ' . $site_name;
         $division_map = [
@@ -485,7 +485,7 @@ require __DIR__ . '/../layouts/app.php';
                 </div>
                 <div class="detail-text">
                     <strong>Main Office</strong>
-                    <span>123 Corporate Plaza, Engineering District, Coimbatore, Tamil Nadu, India</span>
+                    <span>Main office - 232/1A , VEPPANTHATTAI SOUTH, PERAMBALUR - 621116</span>
                 </div>
             </div>
 
@@ -495,7 +495,7 @@ require __DIR__ . '/../layouts/app.php';
                 </div>
                 <div class="detail-text">
                     <strong>Call Us</strong>
-                    <a href="tel:+914423456789">+91 44 2345 6789</a>
+                    <a href="tel:+914423456789">+919087202312</a>
                 </div>
             </div>
 
@@ -505,7 +505,8 @@ require __DIR__ . '/../layouts/app.php';
                 </div>
                 <div class="detail-text">
                     <strong>Email Us</strong>
-                    <a href="mailto:info@slsgroup.com">info@slsgroup.com</a>
+                    <a href="mailto:slsbluemetals46@gmail.com">Crusher mail - slsbluemetals46@gmail.com</a>
+                    <a href="mailto:alshamsal@yahoo.com">Alshams mail - Alshamsal@yahoo.com</a>
                 </div>
             </div>
 
@@ -521,14 +522,14 @@ require __DIR__ . '/../layouts/app.php';
 
             <!-- Map -->
             <a class="map-link"
-               href="https://www.google.com/maps/search/?api=1&query=123+Corporate+Plaza+Engineering+District+Coimbatore+Tamil+Nadu+India"
+               href="https://www.google.com/maps/place/11%C2%B020'33.0%22N+78%C2%B049'51.1%22E/@11.3424932,78.8282783,1109m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d11.3424932!4d78.8308532!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
                target="_blank" rel="noopener noreferrer"
                aria-label="Open location in Google Maps">
 
                 <div class="map-static">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>SLS Group – Coimbatore</span>
-                    <small>123 Corporate Plaza, Engineering District</small>
+                    <span>SLS Group</span>
+                    <small>Locate as</small>
                 </div>
 
                 <div class="map-overlay" aria-hidden="true">

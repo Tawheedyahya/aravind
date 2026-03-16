@@ -20,28 +20,34 @@ $info_categories = [
     <div class="hero-content fade-up">
         <h1>The <span style="font-style: italic; font-weight: 700; text-shadow: 0 0 10px rgba(255,255,255,0.4);">SLS</span> Legacy</h1>
         <p>From high-voltage power grids to sustainable agriculture, we bridge technology and nature to empower future generations.</p>
-        <a class="banner-btn" href="/business">Our business</a>
-        <a class="banner-btn" href="/contact">Contact us</a>
+        <a class="banner-btn" href="/business" style="text-decoration: none;">Our business</a>
+        <a class="banner-btn" href="/contact" style="text-decoration: none;">Contact us</a>
     </div>
 </section>
-<section id="home-awards" class="container">
+<!-- AWARDS -->
+<section id="home-awards">
     <div class="awards-container">
+
         <div class="award-item fade-up">
             <h2>25+</h2>
-            <p>Engineering Heritage</p>
+            <p>Years</p>
         </div>
-        <div class="award-item fade-up">
-            <h2>150+</h2>
-            <p>Infrastructure Projects</p>
+
+        <div class="award-item fade-up fade-delay-1">
+            <h2>100+</h2>
+            <p>Projects</p>
         </div>
-        <div class="award-item fade-up">
-            <h2>40+</h2>
-            <p>Global Alliances</p>
+
+        <div class="award-item fade-up fade-delay-2">
+            <h2>5</h2>
+            <p>Business Verticals</p>
         </div>
-        <div class="award-item fade-up">
-            <h2>500+</h2>
-            <p>Specialists</p>
+
+        <div class="award-item fade-up fade-delay-3">
+            <h2>200+</h2>
+            <p>Clients</p>
         </div>
+
     </div>
 </section>
 <section id="infrastructure-services" aria-labelledby="infrastructure-heading" style="background-color: whitesmoke;">
@@ -100,9 +106,9 @@ $info_categories = [
                         <img src="<?= $vertical['image']; ?>"
                             alt="<?= htmlspecialchars($vertical['title']); ?>"
                             loading="lazy">
-                        <span class="category-badge">
+                        <!-- <span class="category-badge">
                             <?= htmlspecialchars($vertical['category']); ?>
-                        </span>
+                        </span> -->
                     </div>
 
                     <div class="vertical-content">
@@ -132,7 +138,7 @@ $info_categories = [
             Partner with a conglomerate that values integrity and innovation.
         </p>
 
-        <a href="#" class="cta-btn">Get in Touch</a>
+        <a href="/contact" class="cta-btn">Get in Touch</a>
     </div>
 </section>
 <?php require '../aravind/layouts/footer.php' ?>

@@ -118,11 +118,11 @@
         <div class="footer-col">
             <h4>Our Divisions</h4>
             <ul>
-                <li><a href="#">SLS Contracting</a></li>
-                <li><a href="#">SLS Blue Metals</a></li>
-                <li><a href="#">SLS Agency</a></li>
-                <li><a href="#">SLS Marriage Hall</a></li>
-                <li><a href="#">SLS Farm</a></li>
+                <li>SLS Contracting</li>
+                <li>SLS Blue Metals</li>
+                <li>SLS Agency</li>
+                <li>SLS Marriage Hall</li>
+                <li>SLS Farm</li>
             </ul>
         </div>
 
@@ -130,9 +130,12 @@
         <div class="footer-col">
             <h4>Contact Us</h4>
             <ul class="contact-list">
-                <li>Main office - 232/1A , VEPPANTHATTAI SOUTH, PERAMBALUR - 621116</li>
+                <li>3/169, Middle Street, Palaiyur,
+Thondapadi, Veppanthattai,
+Perambalur- 621116, Tamil Nadu.</li>
                 <li>+919087202312</li>
-                <li>info@slsgroup.com</li>
+                <li>Crusher mail - slsbluemetals46@gmail.com</li>
+                <li>Alshams mail - Alshamsal@yahoo.com</li>
             </ul>
         </div>
 
