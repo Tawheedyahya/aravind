@@ -15,7 +15,6 @@ $visibleCount = 3;
     position: relative;
     overflow: hidden;
   }
-
   .as-hero::before {
     content: '';
     position: absolute;
@@ -23,7 +22,6 @@ $visibleCount = 3;
     background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(74,222,128,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
-
   .as-badge {
     display: inline-flex;
     align-items: center;
@@ -37,7 +35,6 @@ $visibleCount = 3;
     font-size: 0.78rem;
     font-weight: 500;
   }
-
   .as-badge-dot {
     width: 7px;
     height: 7px;
@@ -45,7 +42,6 @@ $visibleCount = 3;
     border-radius: 50%;
     display: inline-block;
   }
-
   .as-hero h1 {
     color: #fff;
     font-weight: 800;
@@ -53,12 +49,7 @@ $visibleCount = 3;
     margin: 0 0 18px;
     line-height: 1.1;
   }
-
-  .as-hero h1 em {
-    color: #4ade80;
-    font-style: italic;
-  }
-
+  .as-hero h1 em { color: #4ade80; font-style: italic; }
   .as-hero p {
     color: rgba(255,255,255,0.68);
     max-width: 540px;
@@ -74,7 +65,6 @@ $visibleCount = 3;
     background: #fff;
     padding: 72px 24px 80px;
   }
-
   .as-section-label {
     display: flex;
     align-items: center;
@@ -82,7 +72,6 @@ $visibleCount = 3;
     gap: 7px;
     margin-bottom: 12px;
   }
-
   .as-section-label span {
     font-size: 0.72rem;
     font-weight: 700;
@@ -90,7 +79,6 @@ $visibleCount = 3;
     text-transform: uppercase;
     color: #16a34a;
   }
-
   .as-section-label svg {
     width: 14px;
     height: 14px;
@@ -100,15 +88,12 @@ $visibleCount = 3;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-
   .as-section-sub {
     text-align: center;
     color: #6b7280;
     font-size: 0.9rem;
     margin: 0 0 48px;
   }
-
-  /* ── Cards Grid ── */
   .as-cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -116,7 +101,6 @@ $visibleCount = 3;
     max-width: 1100px;
     margin: 0 auto;
   }
-
   .as-card {
     background: #fff;
     border: 1px solid #e5e7eb;
@@ -128,21 +112,16 @@ $visibleCount = 3;
     display: block;
     color: inherit;
   }
-
   .as-card:hover {
     box-shadow: 0 12px 40px rgba(15,61,46,0.13);
     transform: translateY(-4px);
     border-color: rgba(22,163,74,0.25);
   }
-
-  /* active / elevated card (3rd card in screenshot) */
   .as-card.as-card--active {
     border-color: rgba(22,163,74,0.20);
     box-shadow: 0 16px 48px rgba(15,61,46,0.14);
     transform: translateY(-6px);
   }
-
-  /* ── Image wrapper ── */
   .as-card-img {
     position: relative;
     width: 100%;
@@ -150,7 +129,6 @@ $visibleCount = 3;
     overflow: hidden;
     background: #d1fae5;
   }
-
   .as-card-img img {
     width: 100%;
     height: 100%;
@@ -158,11 +136,7 @@ $visibleCount = 3;
     display: block;
     transition: transform 0.35s;
   }
-
-  .as-card:hover .as-card-img img {
-    transform: scale(1.04);
-  }
-
+  .as-card:hover .as-card-img img { transform: scale(1.04); }
   .as-card-num {
     position: absolute;
     top: 12px;
@@ -179,12 +153,7 @@ $visibleCount = 3;
     justify-content: center;
     line-height: 1;
   }
-
-  /* ── Card body ── */
-  .as-card-body {
-    padding: 22px 22px 24px;
-  }
-
+  .as-card-body { padding: 22px 22px 24px; }
   .as-card-icon {
     width: 38px;
     height: 38px;
@@ -196,7 +165,6 @@ $visibleCount = 3;
     justify-content: center;
     margin-bottom: 14px;
   }
-
   .as-card-icon svg {
     width: 18px;
     height: 18px;
@@ -206,32 +174,10 @@ $visibleCount = 3;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-
-  /* active icon style */
-  .as-card--active .as-card-icon {
-    background: #16a34a;
-    border-color: #16a34a;
-  }
-
-  .as-card--active .as-card-icon svg {
-    stroke: #fff;
-  }
-
-  .as-card-title {
-    color: #0f3d2e;
-    font-weight: 700;
-    font-size: 1rem;
-    margin: 0 0 8px;
-    line-height: 1.35;
-  }
-
-  .as-card-desc {
-    color: #6b7280;
-    font-size: 0.875rem;
-    line-height: 1.65;
-    margin: 0 0 18px;
-  }
-
+  .as-card--active .as-card-icon { background: #16a34a; border-color: #16a34a; }
+  .as-card--active .as-card-icon svg { stroke: #fff; }
+  .as-card-title { color: #0f3d2e; font-weight: 700; font-size: 1rem; margin: 0 0 8px; line-height: 1.35; }
+  .as-card-desc { color: #6b7280; font-size: 0.875rem; line-height: 1.65; margin: 0 0 18px; }
   .as-card-link {
     display: inline-flex;
     align-items: center;
@@ -242,7 +188,6 @@ $visibleCount = 3;
     text-decoration: none;
     transition: gap 0.2s;
   }
-
   .as-card-link svg {
     width: 13px;
     height: 13px;
@@ -253,15 +198,8 @@ $visibleCount = 3;
     stroke-linejoin: round;
     transition: transform 0.2s;
   }
-
-  .as-card:hover .as-card-link svg {
-    transform: translateX(3px);
-  }
-
-  /* ── Hidden cards ── */
-  .as-card--hidden {
-    display: none;
-  }
+  .as-card:hover .as-card-link svg { transform: translateX(3px); }
+  .as-card--hidden { display: none; }
 
   /* ════════════════════════════════
      READ MORE BUTTON
@@ -271,7 +209,6 @@ $visibleCount = 3;
     justify-content: center;
     margin-top: 48px;
   }
-
   .as-readmore-btn {
     display: inline-flex;
     align-items: center;
@@ -287,13 +224,11 @@ $visibleCount = 3;
     transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
     text-decoration: none;
   }
-
   .as-readmore-btn:hover {
     border-color: #16a34a;
     color: #16a34a;
     box-shadow: 0 4px 16px rgba(22,163,74,0.12);
   }
-
   .as-readmore-btn svg {
     width: 14px;
     height: 14px;
@@ -304,40 +239,22 @@ $visibleCount = 3;
     stroke-linejoin: round;
     transition: transform 0.3s;
   }
-
-  .as-readmore-btn.expanded svg {
-    transform: rotate(180deg);
-  }
+  .as-readmore-btn.expanded svg { transform: rotate(180deg); }
 
   /* ════════════════════════════════
      RESPONSIVE
   ════════════════════════════════ */
   @media (max-width: 900px) {
-    .as-cards-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
+    .as-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   }
-
   @media (max-width: 600px) {
-    .as-hero {
-      padding: 44px 16px 90px;
-    }
-
-    .as-cards-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .as-services-section {
-      padding: 48px 16px 56px;
-    }
+    .as-hero { padding: 44px 16px 90px; }
+    .as-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+    .as-services-section { padding: 48px 16px 56px; }
   }
 </style>
 
-<!-- ══════════════════════════════════
-     HERO
-══════════════════════════════════ -->
+<!-- HERO -->
 <section class="as-hero" aria-label="Our Services">
   <span class="as-badge">
     <span class="as-badge-dot"></span>
@@ -347,9 +264,7 @@ $visibleCount = 3;
   <p>Comprehensive electrical solutions for power plants and industrial facilities. From installation to maintenance, we deliver excellence at every stage.</p>
 </section>
 
-<!-- ══════════════════════════════════
-     SERVICES CARDS
-══════════════════════════════════ -->
+<!-- SERVICES CARDS -->
 <section class="as-services-section" aria-labelledby="as-services-heading">
 
   <div class="as-section-label" aria-hidden="true">
@@ -358,7 +273,6 @@ $visibleCount = 3;
   </div>
   <p class="as-section-sub" id="as-services-heading">Click on any service to learn more about our comprehensive solutions.</p>
 
-  <!-- SVG icon definitions (one per service) -->
   <?php
   $icons = [
     1 => '<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h.01M12 8h.01M17 8h.01"/></svg>',
@@ -393,10 +307,6 @@ $visibleCount = 3;
           </div>
           <h3 class="as-card-title"><?= htmlspecialchars($service['title']) ?></h3>
           <p class="as-card-desc"><?= htmlspecialchars($service['description']) ?></p>
-          <!-- <span class="as-card-link" aria-label="View details for <?= htmlspecialchars($service['title']) ?>">
-            View Details
-            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span> -->
         </div>
 
       </a>
@@ -411,4 +321,5 @@ $visibleCount = 3;
   </div>
 
 </section>
-<?php require '../aravind/layouts/footer.php' ?>
+
+<?php require __DIR__ . '/../layouts/footer.php'; ?>

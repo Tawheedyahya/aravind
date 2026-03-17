@@ -363,4 +363,4 @@ setHero(i);
 </script>
 
 
-<?php require '../aravind/layouts/footer.php'; ?>
+<?php require __DIR__.'/../layouts/footer.php'; ?>

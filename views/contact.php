@@ -306,7 +306,6 @@ require __DIR__ . '/../layouts/app.php';
 ?>
 
 <style>
-    /* ── Hero ── */
     .contact-hero {
         background: #1a4a2e;
         text-align: center;
@@ -314,8 +313,6 @@ require __DIR__ . '/../layouts/app.php';
     }
     .contact-hero h1 { font-weight: 700; color: #fff; letter-spacing: -.5px; line-height: 1.15; }
     .contact-hero p  { color: rgba(255,255,255,.78); max-width: 560px; margin: .9rem auto 0; line-height: 1.65; }
-
-    /* ── Layout ── */
     .contact-wrapper {
         max-width: 1160px;
         margin: 0 auto;
@@ -325,8 +322,6 @@ require __DIR__ . '/../layouts/app.php';
         gap: clamp(1.5rem, 4vw, 3.5rem);
         align-items: start;
     }
-
-    /* ── Contact Details ── */
     .contact-details h2 { font-weight: 700; color: #1a4a2e; margin-bottom: 1.6rem; }
     .detail-item {
         display: flex; gap: .85rem; align-items: flex-start;
@@ -342,8 +337,6 @@ require __DIR__ . '/../layouts/app.php';
     .detail-text strong { display: block; font-weight: 600; color: #374a40; margin-bottom: .2rem; }
     .detail-text span, .detail-text a { color: #6b7c74; text-decoration: none; line-height: 1.5; }
     .detail-text a:hover { color: #2d6a4f; }
-
-    /* ── Map ── */
     .map-link {
         display: block; margin-top: 1.5rem; border-radius: 10px; overflow: hidden;
         border: 1px solid #e2e8e4; text-decoration: none; position: relative;
@@ -368,15 +361,11 @@ require __DIR__ . '/../layouts/app.php';
     .map-static svg { opacity: .6; }
     .map-static span { font-weight: 600; color: #374a40; }
     .map-static small { color: #6b7c74; }
-
-    /* ── Card ── */
     .enquiry-card {
         background: #fff; border: 1px solid #e2e8e4;
         border-radius: 14px; padding: clamp(1.5rem, 4vw, 2.5rem);
         box-shadow: 0 4px 24px rgba(26,74,46,.10);
     }
-
-    /* ── Form ── */
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.1rem; }
     .form-group label { font-weight: 600; color: #374a40; }
@@ -405,7 +394,6 @@ require __DIR__ . '/../layouts/app.php';
     }
     .field-error { color: #e53e3e; font-weight: 500; margin-top: .25rem; display: none; }
     .field-error.show { display: block; }
-
     .select-wrap { position: relative; }
     .select-wrap::after {
         content: ''; position: absolute; right: 1rem; top: 50%;
@@ -414,33 +402,19 @@ require __DIR__ . '/../layouts/app.php';
     }
     .form-group select { padding-right: 2.5rem; cursor: pointer; }
     .form-group textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
-
-    /* ── Toast ── */
-    /* ── Toast ── */
-.toast {
-    display: none;
-    padding: .85rem 1.1rem;
-    border-radius: 10px;
-    font-weight: 500;
-    position: fixed;
-    top: 1.25rem;
-    right: 1.25rem;
-    z-index: 9999;
-    min-width: 280px;
-    max-width: 420px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-    animation: slideIn .3s ease;
-}
-.toast.show { display: block; }
-.toast-success { background: #d1fadf; color: #1a6635; border: 1px solid #6ee7a0; }
-.toast-error   { background: #fde8e8; color: #9b1c1c; border: 1px solid #f8b4b4; }
-
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(40px); }
-    to   { opacity: 1; transform: translateX(0); }
-}
-
-    /* ── Button ── */
+    .toast {
+        display: none; padding: .85rem 1.1rem; border-radius: 10px; font-weight: 500;
+        position: fixed; top: 1.25rem; right: 1.25rem; z-index: 9999;
+        min-width: 280px; max-width: 420px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12); animation: slideIn .3s ease;
+    }
+    .toast.show { display: block; }
+    .toast-success { background: #d1fadf; color: #1a6635; border: 1px solid #6ee7a0; }
+    .toast-error   { background: #fde8e8; color: #9b1c1c; border: 1px solid #f8b4b4; }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(40px); }
+        to   { opacity: 1; transform: translateX(0); }
+    }
     .btn-submit {
         width: 100%; padding: .9rem 1.5rem; background: #1a4a2e; color: #fff;
         font-family: inherit; font-weight: 600; border: none; border-radius: 10px;
@@ -449,32 +423,23 @@ require __DIR__ . '/../layouts/app.php';
     }
     .btn-submit:hover:not(:disabled)  { background: #3a7d5a; transform: translateY(-1px); }
     .btn-submit:active:not(:disabled) { transform: translateY(0); }
-    .btn-submit svg    { width: 17px; height: 17px; }
-
-    /* ── Spinner ── */
+    .btn-submit svg { width: 17px; height: 17px; }
     @keyframes spin { to { transform: rotate(360deg); } }
     #btnSpinner {
-        width: 20px; height: 20px;
-        display: none;
-        animation: spin .75s linear infinite;
-        flex-shrink: 0;
+        width: 20px; height: 20px; display: none;
+        animation: spin .75s linear infinite; flex-shrink: 0;
     }
-
-    /* ── Responsive ── */
     @media (max-width: 900px) { .contact-wrapper { grid-template-columns: 1fr; } }
     @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
 </style>
 
-<!-- Hero Banner -->
 <section class="contact-hero fade-up fade-delay-1" aria-label="Contact page header">
     <h1>Get in Touch</h1>
     <p>Have a project in mind or need information about our services? We're here to help you power your vision.</p>
 </section>
 
-<!-- Main Content -->
 <main class="contact-wrapper">
 
-    <!-- Left: Contact Details -->
     <aside aria-label="Contact information">
         <div class="contact-details fade-up fade-delay-2">
             <h2>Contact Details</h2>
@@ -495,7 +460,7 @@ require __DIR__ . '/../layouts/app.php';
                 </div>
                 <div class="detail-text">
                     <strong>Call Us</strong>
-                    <a href="tel:+914423456789">+919087202312</a>
+                    <a href="tel:+919087202312">+919087202312</a>
                 </div>
             </div>
 
@@ -520,18 +485,15 @@ require __DIR__ . '/../layouts/app.php';
                 </div>
             </div>
 
-            <!-- Map -->
             <a class="map-link"
                href="https://www.google.com/maps/place/11%C2%B020'33.0%22N+78%C2%B049'51.1%22E/@11.3424932,78.8282783,1109m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d11.3424932!4d78.8308532!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
                target="_blank" rel="noopener noreferrer"
                aria-label="Open location in Google Maps">
-
                 <div class="map-static">
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span>SLS Group</span>
-                    <small>Locate as</small>
+                    <small>Locate us</small>
                 </div>
-
                 <div class="map-overlay" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span>View on Google Maps</span>
@@ -541,7 +503,6 @@ require __DIR__ . '/../layouts/app.php';
         </div>
     </aside>
 
-    <!-- Right: Enquiry Form -->
     <section aria-label="Enquiry form">
         <div class="enquiry-card">
 
@@ -608,14 +569,11 @@ require __DIR__ . '/../layouts/app.php';
                     <span class="field-error" id="err_message">Please enter your message.</span>
                 </div>
 
-                <!-- Submit button with spinner -->
                 <button type="submit" class="btn-submit" id="submitBtn">
-                    <!-- Default state: label + send icon -->
                     <span id="btnContent" style="display:flex;align-items:center;justify-content:center;gap:.55rem;">
                         <span id="btnLabel">Submit Enquiry</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     </span>
-                    <!-- Submitting state: spinner only -->
                     <svg id="btnSpinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10" stroke-opacity=".3"/>
                         <path d="M12 2a10 10 0 0 1 10 10"/>
@@ -627,7 +585,7 @@ require __DIR__ . '/../layouts/app.php';
     </section>
 </main>
 
-<?php include '../aravind/layouts/footer.php'; ?>
+<?php require __DIR__ . '/../layouts/footer.php'; ?>
 
 <script>
 (function () {
@@ -637,7 +595,6 @@ require __DIR__ . '/../layouts/app.php';
     const btnContent = document.getElementById('btnContent');
     const btnSpinner = document.getElementById('btnSpinner');
 
-    /* ── Spinner toggle ── */
     function setSubmitting(on) {
         submitBtn.disabled          = on;
         submitBtn.style.opacity     = on ? '.7' : '';
@@ -645,13 +602,7 @@ require __DIR__ . '/../layouts/app.php';
         btnContent.style.display    = on ? 'none' : 'flex';
         btnSpinner.style.display    = on ? 'block' : 'none';
     }
-    function showToast(msg, type) {
-    toast.textContent = msg;
-    toast.className   = 'toast show toast-' + type;
-    setTimeout(() => { toast.className = 'toast'; }, 5000);
-}
 
-    /* ── helpers ── */
     function showError(fieldId, errId, show) {
         const field = document.getElementById(fieldId);
         const err   = document.getElementById(errId);
@@ -660,13 +611,8 @@ require __DIR__ . '/../layouts/app.php';
         err.classList.toggle('show', show);
     }
 
-    function isValidEmail(v) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-    }
-
-    function isValidPhone(v) {
-        return v === '' || /^[+\d\s\-().]{7,20}$/.test(v);
-    }
+    function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    function isValidPhone(v) { return v === '' || /^[+\d\s\-().]{7,20}$/.test(v); }
 
     function showToast(msg, type) {
         toast.textContent = msg;
@@ -675,7 +621,6 @@ require __DIR__ . '/../layouts/app.php';
         setTimeout(() => { toast.className = 'toast'; }, 5000);
     }
 
-    /* ── live clear on input ── */
     ['first_name', 'last_name', 'email', 'phone', 'message'].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) el.addEventListener('input', function () {
@@ -685,7 +630,6 @@ require __DIR__ . '/../layouts/app.php';
         });
     });
 
-    /* ── submit ── */
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -699,16 +643,12 @@ require __DIR__ . '/../layouts/app.php';
 
         if (!first)               { showError('first_name', 'err_first_name', true);  valid = false; }
         else                      { showError('first_name', 'err_first_name', false); }
-
         if (!last)                { showError('last_name',  'err_last_name',  true);  valid = false; }
         else                      { showError('last_name',  'err_last_name',  false); }
-
         if (!isValidEmail(email)) { showError('email',      'err_email',      true);  valid = false; }
         else                      { showError('email',      'err_email',      false); }
-
         if (!isValidPhone(phone)) { showError('phone',      'err_phone',      true);  valid = false; }
         else                      { showError('phone',      'err_phone',      false); }
-
         if (!message)             { showError('message',    'err_message',    true);  valid = false; }
         else                      { showError('message',    'err_message',    false); }
 
@@ -717,7 +657,6 @@ require __DIR__ . '/../layouts/app.php';
             return;
         }
 
-        /* All valid — show spinner then submit */
         setSubmitting(true);
         form.submit();
     });

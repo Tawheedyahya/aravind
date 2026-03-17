@@ -13,18 +13,19 @@ $info_categories = [
     <link rel="preload" href="/assets/images/hero-video.mp4" as="video" type="video/mp4">
 
     <video autoplay muted loop playsinline preload="auto"
-        poster="../assets/images/hero-poster.webp"
+        poster="/assets/images/hero-poster.webp"
         id="bg-video">
-        <source src="../assets/images/hero-video.mp4" type="video/mp4">
+        <source src="/assets/images/hero-video.mp4" type="video/mp4">
     </video>
+
     <div class="hero-content fade-up">
         <h1>The <span style="font-style: italic; font-weight: 700; text-shadow: 0 0 10px rgba(255,255,255,0.4);">SLS</span> Legacy</h1>
         <p>From high-voltage power grids to sustainable agriculture, we bridge technology and nature to empower future generations.</p>
-        <a class="banner-btn" href="/business" style="text-decoration: none;">Our business</a>
+        <a class="banner-btn" href="/businesses" style="text-decoration: none;">Our business</a>
         <a class="banner-btn" href="/contact" style="text-decoration: none;">Contact us</a>
     </div>
 </section>
-<!-- AWARDS -->
+
 <section id="home-awards">
     <div class="awards-container">
 
@@ -50,11 +51,12 @@ $info_categories = [
 
     </div>
 </section>
+
 <section id="infrastructure-services" aria-labelledby="infrastructure-heading" style="background-color: whitesmoke;">
 
     <div class="info-img-section fade-up">
         <img
-            src="../assets/images/homepage.webp"
+            src="/assets/images/homepage.webp"
             alt="High-voltage electrical substation infrastructure installation by SLS Contracting"
             loading="lazy"
             class="img-fluid inf-img"
@@ -88,7 +90,8 @@ $info_categories = [
     </div>
 
 </section>
-<?php $verticals = require '../aravind/config/businesses.php'; ?>
+
+<?php $verticals = require __DIR__ . '/../config/businesses.php'; ?>
 
 <section id="home-verticals">
 
@@ -103,18 +106,15 @@ $info_categories = [
                 <div class="vertical-card fade-up">
 
                     <div class="vertical-img">
-                        <img src="<?= $vertical['image']; ?>"
+                        <img src="<?= htmlspecialchars($vertical['image']); ?>"
                             alt="<?= htmlspecialchars($vertical['title']); ?>"
                             loading="lazy">
-                        <!-- <span class="category-badge">
-                            <?= htmlspecialchars($vertical['category']); ?>
-                        </span> -->
                     </div>
 
                     <div class="vertical-content">
                         <h3 style="color: #13583F;"><?= htmlspecialchars($vertical['title']); ?></h3>
                         <p style="color: #527A6B;"><?= htmlspecialchars($vertical['description']); ?></p>
-                        <a href="<?= $vertical['link']; ?>" class="explore-link">
+                        <a href="<?= htmlspecialchars($vertical['link']); ?>" class="explore-link">
                             Explore Vertical →
                         </a>
                     </div>
@@ -127,6 +127,7 @@ $info_categories = [
     </div>
 
 </section>
+
 <section id="home-cta">
     <div class="cta-container fade-up">
         <h2>
@@ -141,6 +142,7 @@ $info_categories = [
         <a href="/contact" class="cta-btn">Get in Touch</a>
     </div>
 </section>
-<?php require '../aravind/layouts/footer.php' ?>
 
-<script src="../public/banner.js"></script>
+<?php require __DIR__ . '/../layouts/footer.php'; ?>
+
+<script src="/public/banner.js"></script>

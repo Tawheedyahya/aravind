@@ -472,4 +472,4 @@ require __DIR__ . '/../layouts/app.php';
     Tap to view more details
   </a>
 </div>
-<?php require '../aravind/layouts/footer.php' ?>
+<?php require __DIR__.'/../layouts/footer.php' ?>
