@@ -353,7 +353,18 @@ if (!function_exists('active')) {
     <nav id="mainNav" aria-label="Primary Navigation">
         <ul>
             <li><a href="/about" <?= active('/about',      $currentPath) ?>>About</a></li>
-            <li><a href="/businesses" <?= active('/businesses', $currentPath) ?>>Businesses</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle <?= in_array($currentPath, ['/businesses', '/farm', '/marriage-hall', '/agency', '/contracting']) ? 'active' : '' ?>" type="button" href="/businesses">
+                    Businesses
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/businesses" <?= active('/businesses', $currentPath) ?>>All Businesses</a></li>
+                    <li><a href="/contracting" <?= active('/contracting', $currentPath) ?>>SLS Contracting</a></li>
+                    <li><a href="/agency" <?= active('/agency', $currentPath) ?>>SLS Agency</a></li>
+                    <li><a href="/marriage-hall" <?= active('/marriage-hall', $currentPath) ?>>SLS Marriage Hall</a></li>
+                    <li><a href="/farm" <?= active('/farm', $currentPath) ?>>SLS Farm</a></li>
+                </ul>
+            </li>
             <li><a href="/projects" <?= active('/projects',   $currentPath) ?>>Projects</a></li>
             <li><a href="/gallery" <?= active('/gallery',    $currentPath) ?>>Gallery</a></li>
             <li><a href="/contact" <?= active('/contact',    $currentPath) ?>>Contact</a></li>

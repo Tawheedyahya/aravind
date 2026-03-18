@@ -151,7 +151,16 @@ color:#fff;
 border-radius:6px;
 text-decoration:none;
 font-size:14px;
+transition:background 0.2s;
 }
+.biz-btn:hover{background:#14532d;color:#fff;}
+
+.biz-btn-outline{
+background:transparent;
+border:2px solid #1e5e3e;
+color:#1e5e3e;
+}
+.biz-btn-outline:hover{background:#1e5e3e;color:#fff;}
 
 /* =========================
 RESPONSIVE
@@ -229,6 +238,9 @@ font-size:30px;
 </ul>
 
 <a href="<?= htmlspecialchars($b['link']) ?>" class="biz-btn">
+View Details →
+</a>
+<a href="/contact" class="biz-btn biz-btn-outline" style="margin-left:10px;">
 Send Enquiry
 </a>
 

@@ -77,6 +77,42 @@ switch ($path) {
         ];
         require __DIR__ . '/views/alshams.php';
         break;
+
+    case '/farm':
+        $seo = [
+            'title' => 'SLS Farm | Generational Agriculture & Sustainable Farming Tamil Nadu',
+            'description' => 'SLS Farm is a legacy agricultural operation spanning mango and coconut plantations, seasonal crops, goat rearing and poultry farming in Tamil Nadu.',
+            'keywords' => 'SLS Farm Tamil Nadu, agricultural farm Tamil Nadu, mango coconut plantation, sustainable farming India'
+        ];
+        require __DIR__ . '/views/farm.php';
+        break;
+
+    case '/marriage-hall':
+        $seo = [
+            'title' => 'SLS Marriage Hall | Premium Wedding & Event Venue Perambalur Tamil Nadu',
+            'description' => 'SLS Marriage Hall is an elegant event venue on the Perambalur-Attur National Highway, ideal for weddings, receptions and large gatherings.',
+            'keywords' => 'SLS Marriage Hall, wedding hall Perambalur, event venue Tamil Nadu, convention hall Attur highway'
+        ];
+        require __DIR__ . '/views/marriage-hall.php';
+        break;
+
+    case '/agency':
+        $seo = [
+            'title' => 'SLS Agency | Reliable Fuel & Petrol Station Tamil Nadu',
+            'description' => 'SLS Agency operates a modern fuel station providing high-quality petrol and diesel with accurate dispensing, on-site delivery and reliable service.',
+            'keywords' => 'SLS Agency petrol pump, fuel station Tamil Nadu, diesel petrol station, fuel delivery Tamil Nadu'
+        ];
+        require __DIR__ . '/views/agency.php';
+        break;
+
+    case '/contracting':
+        $seo = [
+            'title' => 'SLS Contracting Pvt Ltd | Electrical Infrastructure & Engineering Tamil Nadu',
+            'description' => 'SLS Contracting Pvt Ltd delivers high-quality electrical substation, power transmission and electromechanical engineering solutions across India.',
+            'keywords' => 'SLS Contracting, electrical contractor Tamil Nadu, substation works India, power transmission contractor, Alshams GCC India'
+        ];
+        require __DIR__ . '/views/contracting.php';
+        break;
     default:
         http_response_code(404);
         $seo = [
@@ -90,13 +126,5 @@ switch ($path) {
         } else {
             echo '<h1 style="text-align:center;margin-top:80px;font-family:sans-serif;">404 — Page Not Found</h1>';
         }
-        break;
-    case '/contact':
-        $seo = [
-            'title' => 'About SLS Group | Engineering & Infrastructure Experts',
-            'description' => 'Learn about SLS Group’s history, mission, and expertise in engineering, construction, and agricultural infrastructure development.',
-            'keywords' => 'About SLS Group, engineering company Tamil Nadu, infrastructure company India, agricultural engineering experts'
-        ];
-        require __DIR__ . '/views/contact.php';
         break;
 }
