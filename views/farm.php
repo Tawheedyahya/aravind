@@ -25,7 +25,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* opacity: 5.2; */
+  opacity: 0.6;
 }
 .farm-hero-overlay {
   position: absolute;
@@ -322,6 +322,67 @@
   letter-spacing: 0.02em;
 }
 
+/* MAP SECTION */
+.farm-map-section {
+  background: #f0fdf4;
+  padding: 80px 24px;
+  border-top: 1px solid #bbf7d0;
+}
+.farm-map-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: start;
+}
+.farm-map-text h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: #14532d;
+  margin: 10px 0 16px;
+}
+.farm-map-text > p {
+  color: #6b7280;
+  line-height: 1.75;
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+.farm-map-details { display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+.farm-map-detail-item {
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.farm-map-detail-item svg {
+  width: 20px; height: 20px; flex-shrink: 0;
+  stroke: #16a34a; margin-top: 2px;
+}
+.farm-map-detail-item strong { display: block; font-size: 0.82rem; color: #14532d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+.farm-map-detail-item span { font-size: 0.9rem; color: #4b5563; }
+.farm-map-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #16a34a; color: #fff;
+  padding: 13px 28px; border-radius: 999px;
+  font-weight: 700; font-size: 0.9rem;
+  text-decoration: none; transition: background 0.2s, transform 0.2s;
+}
+.farm-map-cta:hover { background: #14532d; transform: translateY(-2px); color: #fff; }
+.farm-map-embed { position: relative; }
+.farm-map-embed iframe {
+  width: 100%; height: 420px;
+  border: 0; border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(20,83,45,0.12);
+  display: block;
+}
+.farm-map-open-link {
+  margin-top: 12px; text-align: right;
+}
+.farm-map-open-link a {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #16a34a; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; transition: color 0.2s;
+}
+.farm-map-open-link a:hover { color: #14532d; }
+
 /* CTA SECTION */
 .farm-cta-section {
   background: #fff;
@@ -344,6 +405,8 @@
 @media (max-width: 900px) {
   .farm-about-inner { grid-template-columns: 1fr; gap: 36px; }
   .farm-cult-grid { grid-template-columns: repeat(2, 1fr); }
+  .farm-map-inner { grid-template-columns: 1fr; gap: 36px; }
+  .farm-map-embed iframe { height: 320px; }
 }
 @media (max-width: 600px) {
   .farm-cult-grid { grid-template-columns: 1fr; }
@@ -357,10 +420,10 @@
 <!-- HERO -->
 <section class="farm-hero" aria-label="SLS Farm Hero">
   <div class="farm-hero-bg" aria-hidden="true">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="../assets/images/farm-video.mp4" type="video/mp4">
-  </video>
-</div>
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="../assets/images/farm-video.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="farm-hero-overlay" aria-hidden="true"></div>
   <div class="farm-hero-content">
     <div class="farm-badge">
@@ -483,6 +546,62 @@
     <p>We believe in preserving tradition while adapting to modern agricultural practices. Our approach focuses on long-term sustainability, consistent yield, and responsible land management that honours the generations before us.</p>
     <div class="farm-philosophy-quote">
       "Rooted in tradition. Growing for generations."
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION MAP -->
+<section class="farm-map-section" aria-label="SLS Farm Location">
+  <div class="farm-map-inner">
+    <div class="farm-map-text">
+      <div class="farm-section-label" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Find Us</span>
+      </div>
+      <h2>Our Location</h2>
+      <p>SLS Farm is located in <strong>Palaiyur, Tamil Nadu</strong> — accessible via the Veppanthattai to Anukur Road.</p>
+      <div class="farm-map-details">
+        <div class="farm-map-detail-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <strong>Address</strong>
+            <span>Veppanthattai to Anukur Rd, Palaiyur, Tamil Nadu 621116</span>
+          </div>
+        </div>
+        <div class="farm-map-detail-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <div>
+            <strong>Operations</strong>
+            <span>Active year-round farming</span>
+          </div>
+        </div>
+        <div class="farm-map-detail-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12"/><path d="M1.61 3.38A2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29"/></svg>
+          <div>
+            <strong>Contact</strong>
+            <span>+91 90872 02312</span>
+          </div>
+        </div>
+      </div>
+      <a href="/contact" class="farm-map-cta">Enquire Now →</a>
+    </div>
+    <div class="farm-map-embed">
+      <iframe
+        src="https://maps.google.com/maps?q=SLS+FARM+Palaiyur+Tamil+Nadu&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        height="420"
+        style="border:0; border-radius:16px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="SLS Farm Location Map"
+        aria-label="Google Maps showing SLS Farm location">
+      </iframe>
+      <div class="farm-map-open-link">
+        <a href="https://maps.app.goo.gl/Pr2YVUJVGXNoj3GN9" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open in Google Maps
+        </a>
+      </div>
     </div>
   </div>
 </section>
