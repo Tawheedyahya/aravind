@@ -48,7 +48,7 @@ $seo = array_merge($defaultSeo, $seo ?? []);
 <meta name="twitter:image" content="<?= $seo['image'] ?>">
 
 <!-- FAVICON -->
-<link rel="icon" href="/assets/favicon/favicon.ico">
+<link rel="icon" href="../assets/images/header_logo.webp">
 
 <!-- STRUCTURED DATA -->
 <script type="application/ld+json">

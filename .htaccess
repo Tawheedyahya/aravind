@@ -5,32 +5,22 @@ php_value max_execution_time 300
 php_value max_input_time 300
 php_value memory_limit 256M
 
-# ─── Pretty URLs (Front Controller) ─────────────────────────
+# ─── Pretty URLs ─────────────────────────────────────────────
 RewriteEngine On
 RewriteBase /
 
-# Allow direct access to real files/folders
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# Route everything else to index.php
-RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteRule ^ index.php [QSA,L]
 
 # ─── Security ────────────────────────────────────────────────
-# Hide sensitive files
-<FilesMatch "\.(env|log|sh|sql|json|lock|yml|yaml|ini|bak|cfg|git)$">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-
-# Disable directory listing
 Options -Indexes
 
-# Block access to hidden files/dirs (e.g. .git, .env)
+# Block hidden files like .env, .git
 RewriteRule (^|/)\. - [F]
 
-# Prevent script injection in uploads
-<FilesMatch "\.(php|php3|php4|php5|phtml)$">
+# Hide sensitive files
+<FilesMatch "\.(env|log|sh|sql|json|lock|yml|yaml|ini|bak|cfg)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
@@ -56,11 +46,6 @@ RewriteRule (^|/)\. - [F]
 </IfModule>
 
 # ─── HTTPS Redirect ──────────────────────────────────────────
-# Uncomment to force HTTPS:
+# Uncomment when SSL is active on Hostinger:
 # RewriteCond %{HTTPS} off
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# ─── www Redirect ────────────────────────────────────────────
-# Uncomment to force non-www:
-# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
